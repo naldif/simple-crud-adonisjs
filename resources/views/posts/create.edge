@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <title>Data Posts</title>
+</head>
+<body>
+
+<div class="container" style="margin-top: 80px">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          TAMBAH POSTS
+        </div>
+        <div class="card-body">
+          <form action="{{ route('posts.store') }}" method="POST">
+            {{ csrfField() }}
+            <div class="form-group">
+              <label>TITLE</label>
+              <input class="form-control {{ hasErrorFor('title') ? 'is-invalid' : '' }}" type="text" name="title" value="{{ old('title','') }}" placeholder="Masukkan Judul Post">
+              {{ elIf('<span class="text-danger">$self</span>', getErrorFor('title'), hasErrorFor('title')) }}
+            </div>
+            <div class="form-group">
+              <label>CONTENT</label>
+              <textarea class="form-control {{ hasErrorFor('content') ? 'is-invalid' : '' }}" name="content"rows="5" placeholder="Masukkan Content Post"></textarea>
+              {{ elIf('<span class="text-danger">$self</span>', getErrorFor('content'), hasErrorFor('content')) }}
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-md btn-success">SIMPAN</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
